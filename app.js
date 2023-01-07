@@ -1,8 +1,10 @@
 //jshint esversion:8
+require('dotenv').config();
 const express=require("express");
 const ejs=require("ejs");
 const mongoose=require("mongoose");
 const bodyParser=require("body-parser");
+const encrypt=require("mongoose-encryption");
 
 const app=express();
 
@@ -46,15 +48,12 @@ app.route("/login")
     })
     .post((req, res)=>{
         User.findOne(
-        {
-            email:req.body.username,
-            password:req.body.password,
-        },function(err,foundUser){
+        {email:req.body.username,},function(err,foundUser){
             if(err){
                 console.log(err);
             }
             else{
-            if(foundUser){
+            if(foundUser.password===req.body.password){
                 console.log(foundUser);
                 res.render("secrets");
             }
@@ -78,5 +77,7 @@ const userSchema=mongoose.Schema({
     email: String,
     password: String,
 });
+
+userSchema.plugin(encrypt,{secret:process.env.SECRET, encryptedFields:["password"]});
 
 const User=mongoose.model("User",userSchema);
