@@ -1,0 +1,25 @@
+{
+  "name": "secrypt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wise-Wizard/Secrypt-Web.git"
+  },
+  "author": "Saransh Shankae",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wise-Wizard/Secrypt-Web/issues"
+  },
+  "homepage": "https://github.com/Wise-Wizard/Secrypt-Web#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.3"
+  }
+}
